@@ -110,7 +110,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.1. Ввод некорректного по формату номера карты")
+    @DisplayName("2.01. Ввод некорректного по формату номера карты")
     void shouldNotBuyInvalidPatternNumberCard() {
         CardInfo card = new CardInfo(getInvalidPatternNumberCard(), getCurrentMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -121,7 +121,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.2. Ввод номера карты из нулей")
+    @DisplayName("2.02. Ввод номера карты из нулей")
     void shouldNotBuyZeroNumberCard() {
         CardInfo card = new CardInfo(getZeroNumberCard(), getCurrentMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -132,7 +132,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.3. Пустое поле \"Номер карты\"")
+    @DisplayName("2.03. Пустое поле \"Номер карты\"")
     void shouldNotBuyEmptyNumberCard() {
         CardInfo card = new CardInfo(getEmptyNumberCard(), getCurrentMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -143,7 +143,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.4. Ввод латинских букв в номер карты")
+    @DisplayName("2.04. Ввод латинских букв в номер карты")
     void shouldNotBuyLetterNumberCard() {
         CardInfo card = new CardInfo(getLetterNumberCard(), getCurrentMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -154,7 +154,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.5. Ввод специальных символов в номер карты")
+    @DisplayName("2.05. Ввод специальных символов в номер карты")
     void shouldNotBuySpecialLetterNumberCard() {
         CardInfo card = new CardInfo(getSpecialLetterNumberCard(), getCurrentMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -165,7 +165,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.6. Ввод некорректного по формату значения месяца (один символ)")
+    @DisplayName("2.06. Ввод некорректного по формату значения месяца (один символ)")
     void shouldNotBuyInvalidPatternMonth() {
         CardInfo card = new CardInfo(getValidActiveCard(), getInvalidPatternMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -176,7 +176,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.7. Ввод некорректного значения месяца (1 проверка)")
+    @DisplayName("2.07. Ввод некорректного значения месяца (1 проверка)")
     void shouldNotBuyZeroMonth() {
         CardInfo card = new CardInfo(getValidActiveCard(), getZeroMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -187,7 +187,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.8. Ввод некорректного значения месяца (2 проверка)")
+    @DisplayName("2.08. Ввод некорректного значения месяца (2 проверка)")
     void shouldNotBuyInvalidMonth() {
         CardInfo card = new CardInfo(getValidActiveCard(), getInvalidMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -198,7 +198,7 @@ public class PaymentTest {
     }
 
     @Test
-    @DisplayName("2.9. Ввод латинских букв в значение месяца")
+    @DisplayName("2.09. Ввод латинских букв в значение месяца")
     void shouldNotBuyLetterMonth() {
         CardInfo card = new CardInfo(getValidActiveCard(), getLetterMonth(), getCurrentYear(), getValidHolder(), getValidCVC());
         val mainPage = new MainPage();
@@ -392,7 +392,7 @@ public class PaymentTest {
         val mainPage = new MainPage();
         val paymentPage = mainPage.checkPayment();
         paymentPage.formInput(card);
-        paymentPage.checkYearError();
+        paymentPage.checkCVCError();
         assertNull(DBUtils.getPaymentStatus());
     }
 

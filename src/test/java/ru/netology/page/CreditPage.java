@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PaymentPage {
+public class CreditPage {
     private SelenideElement title = $x("//*[@id=\"root\"]/div/h3");
     private List<SelenideElement> input = $$(".input__control");
     private SelenideElement cardNumber = input.get(0);
@@ -27,9 +27,9 @@ public class PaymentPage {
     private SelenideElement approvedNotification = $(".notification_status_ok");
     private SelenideElement declinedNotification = $(".notification_status_error");
 
-    public PaymentPage() {
+    public CreditPage() {
         title.shouldBe(visible);
-        title.shouldHave(text("Оплата по карте"));
+        title.shouldHave(text("Кредит по данным карты"));
     }
 
     public void formInput(CardInfo card) {
